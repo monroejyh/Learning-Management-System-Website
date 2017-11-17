@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search</title>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="homepage_format.css" rel="stylesheet"/>
+	<link href="search.css" rel="stylesheet"/>
+	<style>
+@media (max-width: 993px) {
+    .carousel-caption {
+        display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+	.image-word{
+		display:none;
+	}
+  .intro{
+    font-size: 120%;
+  }
+  .container3{
+    font-size: 80%;
+  }
+  .intro{
+    display: none;
+  }
+  .dropdown-menu{
+  background-color:#424141;
+
+}
+.navbar-dark .navbar-nav .dropdown-menu .nav-link {
+    color: rgb(189, 186, 181);
+    font-size:11px;
+}
+
+}
+
+@media (max-width:768px)and (min-width:366px){
+#table1 {
+	display:none;
+	}
+#table2{
+	display:block;
+}
+.container{
+	padding:10px 10px;
+}
+h2{
+	font-size:180%;
+}
+.containerimage{
+	margin-top:4%;
+}	
+.containerword{
+	position:relative;
+	margin-top:4%;
+}
+
+.product-box {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .product-box:hover {
+        background-color: #f8f8f8;
+    }
+    .product-box:hover a {
+        color: #333 !important;
+    }
+ 
+    .feature_box .service {
+        border-bottom: 1px solid #eee;
+    }
+
+.intro{
+	display:none;
+}
+.dropdown-menu{
+	background-color:#424141;
+}
+.navbar-dark .navbar-nav .dropdown-menu .nav-link {
+    color: rgb(189, 186, 181);
+}
+
+
+}
+
+@media only screen and (max-width:365px){
+#table1 {
+	display:none;
+	}
+#table2{
+	display:block;
+}
+.container{
+	padding:10px 10px;
+}
+h2{
+	font-size:110%;
+}
+.containerimage{
+}	
+.containerword{
+	position:relative;
+	margin-top:10%;
+}
+.intro{
+	display:none;
+}
+.containerword ul li{
+	display:table-cell;
+}
+.containerword ul li span{
+	vertical-align:middle;
+	display:inline-block;
+}
+.dropdown-menu{
+	background-color:#424141;
+}
+.navbar-dark .navbar-nav .dropdown-menu .nav-link {
+    color: rgb(189, 186, 181);
+}
+}
+
+@media only screen and (max-width:360px){
+#table1 {
+	display:none;
+	}
+#table2{
+	display:block;
+}
+.container{
+	padding:10px 10px;
+}
+h2{
+	font-size:110%;
+}
+.containerimage{
+}	
+.containerword{
+	position:relative;
+	margin-top:10%;
+}
+.intro{
+	display:none;
+}
+.containerword ul li{
+	display:table-cell;
+}
+.containerword ul li span{
+	vertical-align:middle;
+	display:inline-block;
+}
+.container3{
+	display:none;
+}
+.dropdown-menu{
+	background-color:#424141;
+}
+.navbar-dark .navbar-nav .dropdown-menu .nav-link {
+    color: rgb(189, 186, 181);
+}
+}
+</style>
+</head>
+<body>
+	<nav class="navbar-expand-lg navbar navbar-dark bg-inverse fixed-top"> 
+        <a class="navbar-brand" href="#">WeCollaborate</a>       
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false" aria-controls="navcollapse" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span> 
+        </button>
+        <div class="collapse navbar-collapse" id="myNavbar" >
+		  <ul class="navbar-nav mr-auto">
+			<li class="nav-item dropdown">
+				<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><a class="nav-link" href="#">Development</a></li>
+				<li><a class="nav-link" href="#">Music</a></li>
+				<li><a class="nav-link" href="#">Art</a></li> 
+			</ul>
+			</li>
+			<li>
+					<div class="input-group">
+						<input type="text" id="serachInput" class="form-control" style="width: 400px;" placeholder="Search Courses">
+						<div class="input-group-btn">
+							<button class="btn btn-default" type="submit">
+							<i class="fa fa-search" aria-hidden="true"></i>
+							</button>
+						</div>      
+					</div>
+			</li>
+		  </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Sign Up</a></li>
+          </ul>
+		  
+        </div>
+    </nav>
+
+    
+    <div class="text-center content">
+    <h3 id="title">Search results for "web design"</h3>
+
+    <div class="filter-and-sort">
+    <div class="filter" id="levels">
+	  <button class="btn btn-secondary dropdown-toggle" type="button" id="filter-level" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    Level
+	  </button>
+	  <div class="dropdown-menu" aria-labelledby="filter-level">
+		  <ul>
+		  	<li><input type="checkbox" name=""> All levels</li>
+		  	<li><input type="checkbox" name=""> Beginner</li>
+		  	<li><input type="checkbox" name=""> Intermediate</li>
+			<li><input type="checkbox" name=""> Expert</li>
+		  </ul>
+	  </div>
+	</div>
+
+	<div class="filter" id="language">
+	  <button class="btn btn-secondary dropdown-toggle" type="button" id="filter-language" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    Language
+	  </button>
+	  <div class="dropdown-menu" aria-labelledby="filter-language">
+		  <ul>
+		  	<li><input type="checkbox" name=""> English</li>
+		  	<li><input type="checkbox" name=""> Español</li>
+		  	<li><input type="checkbox" name=""> 日本語</li>
+		  </ul>
+	  </div>
+	</div>
+
+	<div class="filter" id="feature">
+	  <button class="btn btn-secondary dropdown-toggle" type="button" id="filter-feature" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    Features
+	  </button>
+	  <div class="dropdown-menu" aria-labelledby="filter-feature">
+		  <ul>
+		  	<li><input type="checkbox" name=""> Captions</li>
+		  	<li><input type="checkbox" name=""> Quizzes</li>
+		  	<li><input type="checkbox" name=""> Coding Exercises</li>
+		  </ul>
+	  </div>
+	</div>
+
+	<div class="filter" id="price">
+	  <button class="btn btn-secondary dropdown-toggle" type="button" id="filter-price" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    Price
+	  </button>
+	  <div class="dropdown-menu" aria-labelledby="filter-price">
+		  <ul>
+		  	<li><input type="checkbox" name=""> Paid</li>
+		  	<li><input type="checkbox" name=""> Free</li>
+		  </ul>
+	  </div>
+	</div>
+	
+	<div id="sortby">
+		Sort by:
+		<button class="btn btn-secondary dropdown-toggle" type="button" id="filter-price" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    Most Relevant
+	  </button>
+	  <div class="dropdown-menu" aria-labelledby="filter-price" style="width: 15%">
+		  <ul>
+		  	<li>Most Relevant</li>
+		  	<li>Highest Rated</li>
+		  	<li>Newest</li>
+		  	<li>Price: Low to High</li>
+		  	<li>Price: High to Low</li>
+		  </ul>
+	  </div>
+	</div>
+	</div>
+
+</div>
+
+<div id="course-list">
+	<div class="row border search-course">
+		<img src="images/course1.jpg" class="course-img col-lg-3">
+		<div class="course-desc col-lg-8">
+		<a href="">
+			<h5 class="course-title">Build Responsive Real World Websites with HTML5 and CSS3<span class="badge badge-secondary">Best Seller</span></h5>
+		</a>
+		<a href="" class="instructor">Jonas Schmedtmann• Web Developer, Designer, and Teacher</a>
+		<p>The easiest way to learn modern web design, HTML5 and CSS3 step-by-step from scratch. Design AND code a huge project.</p>
+		
+		<div class="row course-details">
+			<div class="course-detail"><span class="fa fa-play-circle"></span> 77 lectures</div>
+			<div class="course-detail"><span class="fa fa-clock-o"></span> 12 hours</div>
+			<div class="course-detail"><span class="fa fa-sort-amount-asc"></span> All levels</div>
+			<div class="course-detail"><span class="fa fa-book"></span> English</div>
+		</div>
+			<div class="course-rate">
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star-half-o"></span> 
+				4.7 (9,788 ratings)
+			</div>
+		
+		</div>
+	</div>
+
+	<div class="row border search-course">
+		<img src="images/course2.jpg" class="course-img col-lg-3">
+		<div class="course-desc col-lg-8">
+		<a href="">
+			<h5 class="course-title">Web Design for Beginners: Real World Coding in HTML & CSS</h5>
+		</a>
+		<a href="" class="instructor">Jonas Schmedtmann• Web Developer, Designer, and Teacher</a>
+		<p>Launch a career as a web designer by learning HTML5, CSS3, responsive design, Sass, cross device compatibility and more!</p>
+		<div class="row course-details">
+			<div class="course-detail"><span class="fa fa-play-circle"></span> 77 lectures</div>
+			<div class="course-detail"><span class="fa fa-clock-o"></span> 12 hours</div>
+			<div class="course-detail"><span class="fa fa-sort-amount-asc"></span> All levels</div>
+			<div class="course-detail"><span class="fa fa-book"></span> English</div>
+		</div>
+			<div class="course-rate">
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star-half-o"></span> 
+				4.7 (9,788 ratings)
+			</div>
+		</div>
+	</div>
+
+	<div class="row border search-course">
+		<img src="images/course3.jpg" class="course-img col-lg-3">
+		<div class="course-desc col-lg-8">
+		<a href="">
+			<h5 class="course-title">Start and Run a Successful Web Design Business from Home</h5>
+		</a>
+		<a href="" class="instructor">Jonas Schmedtmann• Web Developer, Designer, and Teacher</a>
+		<p>Start your own web design business this week by following this step-by-step action course and make your goal a reality</p>
+		<div class="row course-details">
+			<div class="course-detail"><span class="fa fa-play-circle"></span> 77 lectures</div>
+			<div class="course-detail"><span class="fa fa-clock-o"></span> 12 hours</div>
+			<div class="course-detail"><span class="fa fa-sort-amount-asc"></span> All levels</div>
+			<div class="course-detail"><span class="fa fa-book"></span> English</div>
+		</div>
+			<div class="course-rate">
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star-half-o"></span> 
+				4.7 (9,788 ratings)
+			</div>
+		</div>
+	</div>
+
+	<div class="row border search-course">
+		<img src="images/course4.jpg" class="course-img col-lg-3">
+		<div class="course-desc col-lg-8">
+		<a href="">
+			<h5 class="course-title">Learn Photoshop, Web Design & Profitable Freelancing 2017</h5>
+		</a>
+		<a href="" class="instructor">Jonas Schmedtmann• Web Developer, Designer, and Teacher</a>
+		<p>Learn Photoshop and use it to create amazing website designs and create a high, stable income. No coding needed!</p>
+		<div class="row course-details">
+			<div class="course-detail"><span class="fa fa-play-circle"></span> 77 lectures</div>
+			<div class="course-detail"><span class="fa fa-clock-o"></span> 12 hours</div>
+			<div class="course-detail"><span class="fa fa-sort-amount-asc"></span> All levels</div>
+			<div class="course-detail"><span class="fa fa-book"></span> English</div>
+		</div>
+			<div class="course-rate">
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star-half-o"></span> 
+				4.7 (9,788 ratings)
+			</div>
+		</div>
+	</div>
+
+	<div class="row border search-course">
+		<img src="images/course5.jpg" class="course-img col-lg-3">
+		<div class="course-desc col-lg-8">
+		<a href="">
+			<h5 class="course-title">Web Design Responsive Website Template from Scratch HTML CSS</h5>
+		</a>
+		<a href="" class="instructor">Jonas Schmedtmann• Web Developer, Designer, and Teacher</a>
+		<p>Mobile First Web Design how to build a simple website template from scratch using HTML and CSS</p>
+		<div class="row course-details">
+			<div class="course-detail"><span class="fa fa-play-circle"></span> 77 lectures</div>
+			<div class="course-detail"><span class="fa fa-clock-o"></span> 12 hours</div>
+			<div class="course-detail"><span class="fa fa-sort-amount-asc"></span> All levels</div>
+			<div class="course-detail"><span class="fa fa-book"></span> English</div>
+		</div>
+			<div class="course-rate">
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star-half-o"></span> 
+				4.7 (9,788 ratings)
+			</div>
+		</div>
+	</div>
+
+	<div class="row border search-course">
+		<img src="images/course6.jpg" class="course-img col-lg-3">
+		<div class="course-desc col-lg-8">
+		<a href="">
+			<h5 class="course-title">Running A Web Design Business</h5>
+		</a>
+		<a href="" class="instructor">Jonas Schmedtmann• Web Developer, Designer, and Teacher</a>
+		<p>How to run a successful web design business from home – get recurring revenue from great clients.</p>
+		<div class="row course-details">
+			<div class="course-detail"><span class="fa fa-play-circle"></span> 77 lectures</div>
+			<div class="course-detail"><span class="fa fa-clock-o"></span> 12 hours</div>
+			<div class="course-detail"><span class="fa fa-sort-amount-asc"></span> All levels</div>
+			<div class="course-detail"><span class="fa fa-book"></span> English</div>
+		</div>
+			<div class="course-rate">
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star"></span> 
+				<span class="fa fa-star-half-o"></span> 
+				4.7 (9,788 ratings)
+			</div>
+		</div>
+	</div>
+</div>
+
+<ul class="pagination">
+  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+  <li class="page-item"><a class="page-link" href="#">1</a></li>
+  <li class="page-item"><a class="page-link" href="#">2</a></li>
+  <li class="page-item"><a class="page-link" href="#">3</a></li>
+  <li class="page-item"><a class="page-link" href="#">4</a></li>
+  <li class="page-item"><a class="page-link" href="#">5</a></li>
+  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+</ul>
+
+
+</body>
+</html>
