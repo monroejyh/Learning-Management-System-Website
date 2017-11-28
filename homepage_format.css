@@ -254,6 +254,8 @@ footer a:hover {
 
 .dropdown-toggle:focus{
     background-color: black;
-
-
 }
+.error{
+        margin-left: 10px;
+        color: red;
+      }
