@@ -3,6 +3,9 @@ html,body{
 	margin:0;
 	height:100%;
 }
+.button{
+    background-color: orange;
+}
 .jumbotron p{
     font-size: 60%;
   }
@@ -254,8 +257,6 @@ footer a:hover {
 
 .dropdown-toggle:focus{
     background-color: black;
+
+
 }
-.error{
-        margin-left: 10px;
-        color: red;
-      }
