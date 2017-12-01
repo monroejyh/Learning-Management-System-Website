@@ -10,8 +10,95 @@
   	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<link href="coursedetail_format.css" rel="stylesheet"/>
 	<link href="plugins.css" rel="stylesheet"/>
-</head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="bootstrap-rating-input.min.js"></script>
+
+	</head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<script>
+window.onscroll = function() {
+				scrollFunction();
+				sidescrollFunction();
+				};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+
+function sidescrollFunction() {
+	var distanceToTop = document.documentElement.scrollTop || document.body.scrollTop;
+	var visibleHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight; 
+    
+	if (distanceToTop >= document.getElementById("instruction").clientHeight) {
+		document.getElementById("sideBar").style.top = "80px";
+        document.getElementById("sideBar").style.position = "fixed";
+    } 
+	else {
+		document.getElementById("sideBar").style.position = "relative";
+		document.getElementById("sideBar").style.top = "0px";
+        document.getElementById("sideBar").style.display = "block";
+    }
+	
+	if(distanceToTop >= document.documentElement.scrollHeight -visibleHeight -document.getElementById("footer").clientHeight){
+		document.getElementById("sideBar").style.position = "relative";
+		document.getElementById("sideBar").style.display = "block";
+	}
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+
+
+var app = angular.module("myShoppingList", []); 
+app.controller("myCtrl", function($scope) {
+    $scope.products = [{UserName:"Cameron Goodall",Review:"Very much enjoying the content. Some edits have been missed, but it doesn't get in the way too much. A little more indication as to exactly the content of each lecture would be useful when you want to go back and search for a particular skill.",Rate:"4"}];
+    $scope.addItem = function () {
+		var review = {
+                UserName: $scope.addname,
+                Review: $scope.addMe,
+				Rate: document.getElementById("rate").value,
+        };
+        $scope.errortext = "";
+        if (!$scope.addname) {
+			alert("You can enter your review after login");
+		}
+		var len = $scope.products.length;
+        var exist = true;
+        for (var i = 0; i < len; i++) {
+            if ($scope.products[i].UserName === $scope.addname) {
+                exist = false;
+                alert("You have already reviewed this course. Please edit your review.");
+                break;
+            }
+        }
+        if (exist){
+            $scope.products.push(review);
+		}
+    }
+    $scope.removeItem = function (x) {
+        $scope.errortext = "";    
+        $scope.products.splice(x, 1);
+    }
+	
+	
+});
+
+</script>
+
 <nav class="navbar-expand-lg navbar navbar-dark bg-inverse fixed-top"> 
         <a class="navbar-brand" href="#">WeCollbrate</a>       
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false" aria-controls="navcollapse" aria-label="Toggle navigation">
@@ -209,42 +296,39 @@ So, now I want to help YOU to achieve your biggest music and business goals. Let
 				</div>
 			</div>
 			<hr>
-			<div>
-				<div>
-					<p>Very much enjoying the content. Some edits have been missed, but it doesn't get in the way too much. A little more indication as to exactly the content of each lecture would be useful when you want to go back and search for a particular skill.</p>
-					<p>Cameron Goodall  13 days ago</p>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star"></span>
-					<span class="fa fa-star"></span>
+			<p><strong>Student Review</strong></p>
+			<div ng-app="myShoppingList" ng-cloak ng-controller="myCtrl">
+				<div ng-repeat="x in products">
 					<hr>
+					<table>
+					<tr>
+						<td colspan="2">{{x.Review}}</td>
+						<td><span ng-click="removeItem($index)" style="cursor:pointer;" class="w3-right w3-margin-right">×</span></td>
+					</tr>
+					<tr>
+						<td><i class="fa fa-user-circle" aria-hidden="true"></i>&emsp;{{x.UserName}}</td>
+						<td><input type="number" name="your_awesome_parameter" id="rating-readonly" class="rating" data-clearable="remove" value={{x.Rate}} data-readonly/>{{x.Rate}}</td>
+					</tr>
+					</table>
 				</div>
-				<div>
-					<p>I have been doing music from time to time since 15 years. During this time I have had soooo many questions.. of course.. this is not my area... but it´s something I really enjoy to do... I would recommend this course 100%...</p>
-					<p>Luis Santana  21 days ago</p>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<hr>
-				</div>
-				<div>
-					<p>Toller Kurs. Ich kann aber wirklich gut englisch. Könnte mir vorstellen mit Schulenglisch schwer zu verstehen, da Rob oft silben "verschluckt". Daher einen halben Stern Abzug. Inhalt finde ich sehr gelungen.
-Mein Logic Level: Anfänger.</p>
-					<p>Roman Stark  3 months ago</p>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star"></span>
-					<hr>
+				<hr>
+				<div id="review">
+					<div class="form-group">
+						<p><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;&nbsp;<input placeholder="username" ng-model="addname"></p>
+						<p>My rating: <input type="number" name="your_awesome_parameter" id="rate" class="rating" data-clearable="remove" data-inline ng-model="addrate"></p>
+						<textarea class="form-control" rows="5" placeholder="Please enter your review here" ng-model="addMe"></textarea>
+					</div>
+						<div >
+							<button class="btn btn-secondary" ng-click="addItem()">
+							Submit
+							</button>
+							<button class="btn btn-secondary">
+							Cancel
+							</button>
+						</div>
 				</div>
 			</div>
-		</div>
-		
-		
+		</div>	
 		
 		
 		
@@ -280,55 +364,8 @@ Mein Logic Level: Anfänger.</p>
 </div>
 
 
-
-
-
-
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-
-<script>
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {
-				scrollFunction();
-				sidescrollFunction();
-				};
-
-function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("myBtn").style.display = "block";
-    } else {
-        document.getElementById("myBtn").style.display = "none";
-    }
-}
-
-function sidescrollFunction() {
-	var distanceToTop = document.documentElement.scrollTop || document.body.scrollTop;
-	var visibleHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight; 
     
-	if (distanceToTop >= document.getElementById("instruction").clientHeight) {
-		document.getElementById("sideBar").style.top = "80px";
-        document.getElementById("sideBar").style.position = "fixed";
-    } 
-	else {
-		document.getElementById("sideBar").style.position = "relative";
-		document.getElementById("sideBar").style.top = "0px";
-        document.getElementById("sideBar").style.display = "block";
-    }
-	
-	if(distanceToTop >= document.documentElement.scrollHeight -visibleHeight -document.getElementById("footer").clientHeight){
-		document.getElementById("sideBar").style.position = "relative";
-		document.getElementById("sideBar").style.display = "block";
-	}
-}
-
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-}
-
-
-</script>
 
 <footer class="text-center" id="footer">
 
