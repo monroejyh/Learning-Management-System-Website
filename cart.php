@@ -1,5 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE>
+
+<?php
+session_start();
+
+include("functions/functions.php");
+
+?>
+
+<html lang="en" >
 <head>
   <title>Homepage_sample</title>
     <meta charset="UTF-8">
@@ -7,6 +15,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <script src="https://use.fontawesome.com/1e6a9a1261.js"></script>
+
+    <link rel="stylesheet" href="jquery.rateyo.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.0.1/jquery.rateyo.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.0.1/jquery.rateyo.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+ <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+ 
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css" rel="stylesheet">
+  <script src="app.js"></script>
   <link href="homepage_format.css" rel="stylesheet"/>
   <link href="plugins.css" rel="stylesheet"/>
 <style>
@@ -166,174 +187,154 @@ h2{
 }
 </style>  
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
-<nav class="navbar-expand-lg navbar navbar-dark bg-inverse fixed-top"> 
-        <a class="navbar-brand" href="#">WeCollbrate</a>       
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false" aria-controls="navcollapse" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span> 
-        </button>
-        <div class="collapse navbar-collapse" id="myNavbar" >
-		  <ul class="navbar-nav mr-auto">
-			<li class="nav-item dropdown">
-				<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
-			<ul class="dropdown-menu">
-				<li><a class="nav-link" href="#">Development</a></li>
-				<li><a class="nav-link" href="#">Music</a></li>
-				<li><a class="nav-link" href="#">Art</a></li> 
-			</ul>
-			</li>
-			<li>
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search Courses">
-						<div class="input-group-btn">
-							<button class="btn btn-default" type="submit">
-							<i class="fa fa-search" aria-hidden="true"></i>
-							</button>
-						</div>      
-					</div>
-			</li>
-		  </ul>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Sign Up</a></li>
-          </ul>
-		  
-        </div>
-    </nav>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50" ng-controller="mainController">
 
-<div class="text-center headcontainer row" id="#kkk">
-<div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-12 containerword text-center" width="50%">
-  <br><h2><strong>Learning Management System You'll Love</strong></h2>
-  <p class="intro"><em>An easy to set up and use learning management system that will fulfill all your corporate training needs.</em></p>
-  
+<?php
 
-  <div class="container3">
-  <ul style="text-align:left; list-style:none;margin-top:20px">
-      <li><p><span class="fa fa-check"></span> Explore a lot of courses</p></li>
-      <li><p><span class="fa fa-check"></span> Enroll in courses at any time, with lifetime access</p></li>
-      <li><p><span class="fa fa-check"></span> Learn at your own pace, from any device</p></li>
-    </ul>  
-    </div>
-  <br>
-</div>
-<div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-12 containerimage" width="50%">
-                            <div class="slider-area">
+include("header.php");
 
-                                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="3000">
-                                    <!-- Indicators -->
-                                    <ol class="carousel-indicators">
-                                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
-                                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
-                            
+?>
 
-                                    </ol>
 
-                                    <!-- Wrapper for slides -->
-                                    <div class="carousel-inner img-rounded" role="listbox">
 
-                                        <div class="carousel-item active">
-                                            <img src="images/image3.jpg" alt="">
-                                        </div>
-
-                                        <div class="carousel-item">
-                                            <img src="images/image4.jpg" alt="">
-                                        </div>
-
-                                        <div class="carousel-item">
-                                            <img src="images/image5.jpg" alt="">
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-</div>
-
-<div>
-<div class="container-fluid bg-3 text-center d-none d-lg-block" id="jumbo">  
-<div class="jumbotron">  
-  <div class="row">
-  	     
-    <div class="col-sm-4 offset-sm-0">
-        <div class="section3">
-            <span> <img src="images/LMS-image3.jpg" class="img-responsive" style="width:15%" alt="Image">
-            <p>Learn Online</p></span>
-             </div>
-    </div>
-      
-    <div class="col-sm-4 offset-sm-0">
-        <div class="section3">
-            <span><img src="images/LMS-image5.jpg" class="img-responsive" style="width:15%" alt="Image">
-            <p>Interact with other students</p></span></div>
-    </div>
-    
-      <div class="col-sm-4 offset-sm-0">
-        <div class="section3">
-            <span><img src="images/LMS-image6.jpg" class="img-responsive" style="width:15%" alt="Image">
-            <p>Fully Responsive</p></span>
-		</div>
-    </div>
-	</div>
-  </div>
-</div>
-
-<div class="text-center content" style="margin-top:40px">
+<div class="text-center content" style="margin-top:100px;">
   <h2><strong>POPULAR COURSES</strong></h2><br>
-  <div class="row">
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-    <div class="card">
-      <img class="card-img-top" src="images/artCourse.jpg" alt="Art Course">
-      <a class="card-text" href="#"><p><strong>Art Course</strong></p></a><br>
-    </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3" >
-    <div class="card">
-      <img class="card-img-top" src="images/webCourse.jpg" alt="Web Development Course">
-      <a class="card-text" href="#"><p><strong>Web Course</strong></p></a><br>
-    </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-    <div class="card">
-      <img class="card-img-top" src="images/musicCourse.jpg" alt="Music Course">
-      <a href="#"><p><strong>Music Course</strong></p></a><br>
-    </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-    <div class="card">
-      <img class="card-img-top" src="images/designCourse.jpg" alt="Music Course">
-      <a href="#"><p><strong>Design Course</strong></p></a><br>
-    </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-    <div class="card">
-      <img class="card-img-top" src="images/softwareCourse.jpg" alt="Software Course">
-      <a href="#"><p><strong>Software Course</strong></p></a><br>
-    </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3" >
-    <div class="card">
-      <img class="card-img-top" src="images/businessCourse.jpg" alt="Business Course">
-      <a href="#"><p><strong>Business Course</strong></p></a><br>
-    </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-    <div class="card">
-      <img class="card-img-top" src="images/coffeeCourse.jpg" alt="Coffee Course">
-      <a href="#"><p><strong>Coffee Course</strong></p></a><br>
-    </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-    <div class="card">
-      <img class="card-img-top" src="images/managementCourse.jpg" alt="Management Course">
-      <a href="#"><p><strong>Management Course</strong></p></a><br>
-    </div>
-  </div>
+  
+ <form action = "" method ="post"  enctype = "multipart/form-data">
+<table class= "table-responsive" align ="center" width ="1000" border="2" bgColor = "cornsilk">
+
+<tr align = "center">
+  <th>Remove</th>
+  <th>Product(s)</th>
+  <th>Quantity</th>
+  <th>Total Price</th>
+</tr>
+
+<?php
+
+$total = 0;
+
+ global $mysqli;
+
+ $ip = getIp();
+
+ $sel_price = "select * from cart where ip_add = '$ip'";
+
+ $run_price = mysqli_query($mysqli, $sel_price);
+
+ while($c_price = mysqli_fetch_array($run_price)){
+
+  $course_id = $c_price['course_id'];
+
+  $course_qty = $c_price['qty'];
+
+  $c_price = "select * from course where course_id = '$course_id'";
+
+  $run_course_price = mysqli_query($mysqli, $c_price);
+
+  while($cc_price = mysqli_fetch_array($run_course_price)){
+
+    //$course_price = array($cc_price['course_price']);
+    $course_title = $cc_price['course_title'];
+    $course_image = $cc_price['course_image'];
+    $single_price = $cc_price['course_price'];
+    
+
+    $sub_total_price = $single_price * $course_qty;
+    $course_price = array($sub_total_price);
+    $values = array_sum($course_price);
+
+    $total += $values;
+
+
+ 
+
+?>
+
+<tr align = "center">
+  <td> <input type = "checkbox" name = "remove[]" value = "<?php echo $course_id; ?>" /><input type="hidden" name = "product_adjust_id[]" value = "<?php echo $course_id; ?>" /></td>
+  <td <?php echo $course_title ?> <br/>
+  <img src = "admin/course_images/<?php echo $course_image;?>" width = "60" height = "100" /></td>
+  <td><input type="text" size = "4" name ="qty[]" value = "<?php echo $course_qty; ?>"></td>
+  <?php
+   $ip = getIp();
+
+  if((isset($_POST['update_cart'])) AND $_POST['remove'] == "")
+    {
+
+      $i = 0;
+
+      $new_qty = $_POST['qty'];
+      foreach($_POST['product_adjust_id'] as $pro_adj_id){
+          $new_qty = $_POST['qty'][$i];
+           $update_qty = "update cart set qty = '$new_qty' where ip_add = '$ip' and course_id = '$pro_adj_id'";
+          $run_qty = mysqli_query($mysqli, $update_qty);
+          ++$i;
+      }
+
+      echo "<script>window.location.href = window.location.href</script>";
+     
+    
+    }
+
+  ?>
+
+  <td><?php echo "$" . $single_price ?></td>
+
+  </tr>
+<?php   } } ?>
+
+  <tr align = "right">
+    <td colspan="4"> <b>Sub Total: </b></td>
+    <td colspan="4"><?php echo "$" . $total; ?> </td>
+    <td></td>
+  </tr>
+
+  <tr>
+
+   <td> <input type = "submit" name = "update_cart" value = "Update cart"/></td>
+   <td><input type ="submit" name="continue" value = "Continue Shopping"/></td>
+   <td><button><a href = "checkout.php">Checkout</a></button></td>
+   
+  </tr>
+</table>
+ </form>
+
+ <?php
+
+global $mysqli;
+
+$ip = getIp();
+
+if(isset($_POST['update_cart'])){
+
+  foreach($_POST['remove'] as $remove_id){
+
+    $delete_course = "delete from cart where course_id = '$remove_id' AND ip_add = '$ip'";
+
+    $run_delete = mysqli_query($mysqli, $delete_course);
+
+    if($run_delete){
+
+      echo "<script>window.open('cart.php', '_self')</script>";
+    }
+
+
+  }
+
+}
+
+if(isset($_POST['continue'])){
+
+  echo "<script>window.open('index.php', '_self')</script>";
+}
+
+
+
+?>
+
 </div>
-</div>
-</div>
+
 
 
 

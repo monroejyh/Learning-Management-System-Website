@@ -1,5 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE>
+
+<?php
+
+include("functions/functions.php");
+
+?>
+
+<html lang="en" ng-app="BostonPublicLibrary">
 <head>
   <title>Homepage_sample</title>
     <meta charset="UTF-8">
@@ -7,6 +14,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <script src="https://use.fontawesome.com/1e6a9a1261.js"></script>
+
+    <link rel="stylesheet" href="jquery.rateyo.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.0.1/jquery.rateyo.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.0.1/jquery.rateyo.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+ <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+ 
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css" rel="stylesheet">
+  <script src="app.js"></script>
   <link href="homepage_format.css" rel="stylesheet"/>
   <link href="plugins.css" rel="stylesheet"/>
 <style>
@@ -166,54 +186,65 @@ h2{
 }
 </style>  
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
-<nav class="navbar-expand-lg navbar navbar-dark bg-inverse fixed-top"> 
-        <a class="navbar-brand" href="#">WeCollbrate</a>       
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false" aria-controls="navcollapse" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span> 
-        </button>
-        <div class="collapse navbar-collapse" id="myNavbar" >
-		  <ul class="navbar-nav mr-auto">
-			<li class="nav-item dropdown">
-				<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
-			<ul class="dropdown-menu">
-				<li><a class="nav-link" href="#">Development</a></li>
-				<li><a class="nav-link" href="#">Music</a></li>
-				<li><a class="nav-link" href="#">Art</a></li> 
-			</ul>
-			</li>
-			<li>
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search Courses">
-						<div class="input-group-btn">
-							<button class="btn btn-default" type="submit">
-							<i class="fa fa-search" aria-hidden="true"></i>
-							</button>
-						</div>      
-					</div>
-			</li>
-		  </ul>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Sign Up</a></li>
-          </ul>
-		  
-        </div>
-    </nav>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50" ng-controller="mainController">
 
+<?php
+
+include("header.php");
+
+?>
 <div class="text-center headcontainer row" id="#kkk">
 <div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-12 containerword text-center" width="50%">
   <br><h2><strong>Learning Management System You'll Love</strong></h2>
   <p class="intro"><em>An easy to set up and use learning management system that will fulfill all your corporate training needs.</em></p>
   
 
-  <div class="container3">
-  <ul style="text-align:left; list-style:none;margin-top:20px">
-      <li><p><span class="fa fa-check"></span> Explore a lot of courses</p></li>
-      <li><p><span class="fa fa-check"></span> Enroll in courses at any time, with lifetime access</p></li>
-      <li><p><span class="fa fa-check"></span> Learn at your own pace, from any device</p></li>
-    </ul>  
-    </div>
+<div >
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          I forgot my login/password and/or I am having issues with my login, what do I do?
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                      <div class="panel-body">
+                        Please visit the Search Opportunities page and click on the "Retrieve Password" link. If you created a profile with us, using a unique email address, you will receive an email that will direct you to reset your password. If the system does not recognize your email, or if you don't receive an email to reset your password, your profile does not exist in our system.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                      <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          How do I apply for a job/internship?
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                      <div class="panel-body">
+                        To apply for a job and/or an internship, please visit the Search Opportunities page to view and apply for any opportunities at BPL. In order to be considered for any position, you need to create a candidate profile with a completed application.To apply for a job and/or an internship, please visit the Search Opportunities page to view and apply for any opportunities at BPL. In order to be considered for any position, you need to create a candidate profile with a completed application.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                      <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          Can I contact the HR Department regarding my application?
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                      <div class="panel-body">
+                        Because of the volume of applications the Library receives, the HR Department is unable to answer individual inquiries. Please log into your profile to edit your candidate information, update your application/resume, and view the status of your application for a particular job.Because of the volume of applications the Library receives, the HR Department is unable to answer individual inquiries. Please log into your profile to edit your candidate information, update your application/resume, and view the status of your application for a particular job.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
   <br>
 </div>
 <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-12 containerimage" width="50%">
@@ -279,61 +310,42 @@ h2{
 	</div>
   </div>
 </div>
+</div>
 
 <div class="text-center content" style="margin-top:40px">
   <h2><strong>POPULAR COURSES</strong></h2><br>
   <div class="row">
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-    <div class="card">
-      <img class="card-img-top" src="images/artCourse.jpg" alt="Art Course">
-      <a class="card-text" href="#"><p><strong>Art Course</strong></p></a><br>
+<?php 
+
+ global $mysqli;
+$get_courses = "select * from course";
+  $run_courses = mysqli_query($mysqli, $get_courses);
+  while($row_courses = mysqli_fetch_array($run_courses)){
+
+    $course_id = $row_courses['course_id'];
+  //  $course_cat = $row_courses['course_cat'];
+    $course_title = $row_courses['course_title'];
+    $course_price = $row_courses['course_price'];
+    $course_image= $row_courses['course_image'];
+
+  echo " 
+   <div class='col-12 col-sm-3 col-md-3 col-lg-3'>
+   <div class='card'>
+      <img class='card-img-top' src='admin/course_images/$course_image' alt='Art Course'>
+      <a class='card-text' ><p><strong>$course_title</strong></p></a>
+      <b> $ $course_price </b>
+      <a href = 'CourseDetail.php?course_id=$course_id' > Details</a>
+      <a href = 'index.php?course_id=$course_id'><button> Add to Favorites</button></a>
     </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3" >
-    <div class="card">
-      <img class="card-img-top" src="images/webCourse.jpg" alt="Web Development Course">
-      <a class="card-text" href="#"><p><strong>Web Course</strong></p></a><br>
-    </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-    <div class="card">
-      <img class="card-img-top" src="images/musicCourse.jpg" alt="Music Course">
-      <a href="#"><p><strong>Music Course</strong></p></a><br>
-    </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-    <div class="card">
-      <img class="card-img-top" src="images/designCourse.jpg" alt="Music Course">
-      <a href="#"><p><strong>Design Course</strong></p></a><br>
-    </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-    <div class="card">
-      <img class="card-img-top" src="images/softwareCourse.jpg" alt="Software Course">
-      <a href="#"><p><strong>Software Course</strong></p></a><br>
-    </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3" >
-    <div class="card">
-      <img class="card-img-top" src="images/businessCourse.jpg" alt="Business Course">
-      <a href="#"><p><strong>Business Course</strong></p></a><br>
-    </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-    <div class="card">
-      <img class="card-img-top" src="images/coffeeCourse.jpg" alt="Coffee Course">
-      <a href="#"><p><strong>Coffee Course</strong></p></a><br>
-    </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-    <div class="card">
-      <img class="card-img-top" src="images/managementCourse.jpg" alt="Management Course">
-      <a href="#"><p><strong>Management Course</strong></p></a><br>
-    </div>
-  </div>
+    </div>";
+ 
+  }
+
+
+?>
 </div>
 </div>
-</div>
+
 
 
 

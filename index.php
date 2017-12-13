@@ -1,5 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE>
+
+<?php
+session_start();
+include("functions/functions.php");
+include("includes/db.php");
+
+?>
+
+<html lang="en" >
 <head>
   <title>Homepage_sample</title>
     <meta charset="UTF-8">
@@ -7,6 +15,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <script src="https://use.fontawesome.com/1e6a9a1261.js"></script>
+
+    <link rel="stylesheet" href="jquery.rateyo.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.0.1/jquery.rateyo.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.0.1/jquery.rateyo.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+ <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+ 
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css" rel="stylesheet">
+  <script src="app.js"></script>
   <link href="homepage_format.css" rel="stylesheet"/>
   <link href="plugins.css" rel="stylesheet"/>
 <style>
@@ -166,39 +187,152 @@ h2{
 }
 </style>  
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50" ng-controller="mainController">
+
+<form  method ="post" enctype = "multipart/form-data" id = "signUpModal" class = "modal fade" role = "dialog"> <!-- Sign Up Modal Window -->
+        <div class = "modal-dialog">
+      
+          <div class = "modal-content">
+            <div class = "modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Sign Up - We Collaborate
+            </div>
+        
+            <div class="modal-body">
+                <div ng-show="message" class="alert alert-danger" role="alert">{{message}}</div>
+              <span>Enter your name : <input ng-model="user.name" type = "text" placeholder = "Name" name = "c_name" class="form-control"  /></span>
+              <span>Preferred username : <input ng-model="user.username" type = "text" placeholder = "Username" name = "c_username" class="form-control"/></span>
+                  <span>Enter your email ID : <input ng-model="user.name" type = "text" placeholder = "alice@wonderland.com" name = "c_email" class="form-control"  /></span>
+              <span>Enter your password : <input ng-model="user.password" name ="c_password" type = "password" class="form-control"/></span>
+              <span>Insert image : <input name = "customer_image" type= "file" class="form-control"/></span>
+            </div>
+        
+            <div class="modal-footer">
+              <button ng-click="signup(user)" type = "submit" name="register" value = "register" class = "btn btn-primary">Sign Up</button>
+              <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </form> <!-- end of sign up Modal -->
+  
+      <form method ="post" enctype = "multipart/data" id = "loginModal" class = "modal fade" role = "dialog"> <!-- Log in Modal Window -->
+        <div class = "modal-dialog">
+      
+          <div class = "modal-content">
+            <div class = "modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Login - We Collaborate</h4>        
+            </div>
+        
+            <div class="modal-body">
+              <span>Enter your Username : <input ng-model="user.username" type = "text" placeholder = "Name" class="form-control" id = "name25" /></span>
+              
+              <span>Enter your password : <input ng-model="user.password" type = "password" class="form-control" id = "password25" /></span>
+              
+            </div>
+        
+            <div class="modal-footer">
+              <button ng-click="login(user)" type = "submit" class = "btn btn-primary" id= "loginInButton">Login</button>
+              <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </form> <!-- end of log in Modal -->
+    
 <nav class="navbar-expand-lg navbar navbar-dark bg-inverse fixed-top"> 
         <a class="navbar-brand" href="#">WeCollbrate</a>       
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false" aria-controls="navcollapse" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span> 
         </button>
         <div class="collapse navbar-collapse" id="myNavbar" >
-		  <ul class="navbar-nav mr-auto">
-			<li class="nav-item dropdown">
-				<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
-			<ul class="dropdown-menu">
-				<li><a class="nav-link" href="#">Development</a></li>
-				<li><a class="nav-link" href="#">Music</a></li>
-				<li><a class="nav-link" href="#">Art</a></li> 
-			</ul>
-			</li>
-			<li>
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search Courses">
-						<div class="input-group-btn">
-							<button class="btn btn-default" type="submit">
-							<i class="fa fa-search" aria-hidden="true"></i>
-							</button>
-						</div>      
-					</div>
-			</li>
-		  </ul>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Sign Up</a></li>
-          </ul>
-		  
+      <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <?php getCategory(); ?>
+      </ul>
+      </li>
+      <li>
+          <div id ="form" class="input-group">
+            <form method="get" action="results.php" enctype="multipart/form-data">
+              <input type="text" name="user_query" placeholder="Search Course" />
+              <input type="submit" name="search" value="Search"/>
+              </form> 
+          </div>
+      </li>
+
+                <div class="collapse navbar-collapse" id="myNavbar">                  
+                    <ul class="nav navbar-nav navbar-right">
+                  <li ng-show="showCurrentUser"><a href="#">
+                    <span
+                    ng-show="showCurrent" class="glyphicon glyphicon-user"></span>
+                    Welcome Guest</a></li>
+                      <li ng-hide="showCurrentUser"><a data-target="#signUpModal" data-toggle="modal" href="#signUpModal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                      <?php cart(); ?>
+                      <li><a href="cart.php"> Cart : <?php total_items(); ?></a></li>
+                      <li ng-hide="showCurrentUser"><a data-target="#loginModal" data-toggle="modal" href="#loginModal" ><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                      <li ng-show="showCurrentUser"><a ng-click="logout()" href=""><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    </ul>
+
+                </div>
         </div>
+
+<?php
+
+
+global $mysqli;
+
+if(isset($_POST['register'])){
+
+  $ip = getIp();
+  $c_name = $_POST['c_name'];
+  $c_password = $_POST['c_password'];
+  $c_email = $_POST['c_email'];
+  $c_username = $_POST['c_username'];
+  $customer_image = $_FILES['customer_image']['name'];
+  $customer_image_tmp = $_FILES['customer_image']['tmp_name'];
+
+  move_uploaded_file($customer_image_tmp, "customer/customer_images/$customer_image");
+
+  $insert_c = "insert into customer (customer_ip, customer_name, customer_password, customer_email, customer_username, customer_image) values('$ip', '$c_name',
+  '$c_password', '$c_email', '$c_username', '$customer_image')";
+
+ //echo $insert_c;
+
+$run_c = mysqli_query($mysqli, $insert_c);
+
+$sel_cart = "select * from cart where ip_add = '$ip'";
+
+$run_cart = mysqli_query($mysqli, $sel_cart);
+
+$check_cart = mysqli_num_rows($run_cart);
+
+if($check_cart == 0){
+
+  $_SESSION['customer_email'] = $c_email;
+
+  echo "<script>alert('Account has been created successfully!')</script>";
+
+  echo "<script>window.open('customer/my_account.php', '_self')</script>";
+
+
+}
+
+else{
+
+
+  $_SESSION['customer_email'] = $c_email;
+
+  echo "<script>alert('Account has been created successfully!')</script>";
+
+  echo "<script>window.open('checkout.php', '_self')</script>";
+
+}
+
+}
+
+    ?>
+
     </nav>
 
 <div class="text-center headcontainer row" id="#kkk">
@@ -207,13 +341,52 @@ h2{
   <p class="intro"><em>An easy to set up and use learning management system that will fulfill all your corporate training needs.</em></p>
   
 
-  <div class="container3">
-  <ul style="text-align:left; list-style:none;margin-top:20px">
-      <li><p><span class="fa fa-check"></span> Explore a lot of courses</p></li>
-      <li><p><span class="fa fa-check"></span> Enroll in courses at any time, with lifetime access</p></li>
-      <li><p><span class="fa fa-check"></span> Learn at your own pace, from any device</p></li>
-    </ul>  
-    </div>
+<div >
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          I forgot my login/password and/or I am having issues with my login, what do I do?
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                      <div class="panel-body">
+                        Please visit the Search Opportunities page and click on the "Retrieve Password" link. If you created a profile with us, using a unique email address, you will receive an email that will direct you to reset your password. If the system does not recognize your email, or if you don't receive an email to reset your password, your profile does not exist in our system.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                      <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          How do I apply for a job/internship?
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                      <div class="panel-body">
+                        To apply for a job and/or an internship, please visit the Search Opportunities page to view and apply for any opportunities at BPL. In order to be considered for any position, you need to create a candidate profile with a completed application.To apply for a job and/or an internship, please visit the Search Opportunities page to view and apply for any opportunities at BPL. In order to be considered for any position, you need to create a candidate profile with a completed application.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                      <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          Can I contact the HR Department regarding my application?
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                      <div class="panel-body">
+                        Because of the volume of applications the Library receives, the HR Department is unable to answer individual inquiries. Please log into your profile to edit your candidate information, update your application/resume, and view the status of your application for a particular job.Because of the volume of applications the Library receives, the HR Department is unable to answer individual inquiries. Please log into your profile to edit your candidate information, update your application/resume, and view the status of your application for a particular job.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
   <br>
 </div>
 <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-12 containerimage" width="50%">
@@ -279,61 +452,18 @@ h2{
 	</div>
   </div>
 </div>
+</div>
 
 <div class="text-center content" style="margin-top:40px">
   <h2><strong>POPULAR COURSES</strong></h2><br>
   <div class="row">
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-    <div class="card">
-      <img class="card-img-top" src="images/artCourse.jpg" alt="Art Course">
-      <a class="card-text" href="#"><p><strong>Art Course</strong></p></a><br>
-    </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3" >
-    <div class="card">
-      <img class="card-img-top" src="images/webCourse.jpg" alt="Web Development Course">
-      <a class="card-text" href="#"><p><strong>Web Course</strong></p></a><br>
-    </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-    <div class="card">
-      <img class="card-img-top" src="images/musicCourse.jpg" alt="Music Course">
-      <a href="#"><p><strong>Music Course</strong></p></a><br>
-    </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-    <div class="card">
-      <img class="card-img-top" src="images/designCourse.jpg" alt="Music Course">
-      <a href="#"><p><strong>Design Course</strong></p></a><br>
-    </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-    <div class="card">
-      <img class="card-img-top" src="images/softwareCourse.jpg" alt="Software Course">
-      <a href="#"><p><strong>Software Course</strong></p></a><br>
-    </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3" >
-    <div class="card">
-      <img class="card-img-top" src="images/businessCourse.jpg" alt="Business Course">
-      <a href="#"><p><strong>Business Course</strong></p></a><br>
-    </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-    <div class="card">
-      <img class="card-img-top" src="images/coffeeCourse.jpg" alt="Coffee Course">
-      <a href="#"><p><strong>Coffee Course</strong></p></a><br>
-    </div>
-  </div>
-  <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-    <div class="card">
-      <img class="card-img-top" src="images/managementCourse.jpg" alt="Management Course">
-      <a href="#"><p><strong>Management Course</strong></p></a><br>
-    </div>
-  </div>
+ <?php
+   getCourses()
+   ?> 
+   <?php getCatCourses();?>
 </div>
 </div>
-</div>
+
 
 
 
